@@ -1,0 +1,10 @@
+{
+  "name": "XpandedPortal",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/DigitalVikings/XpandedPortal",
+  "description": "Lots of portal configuration options: targeted destination UI (inspired by XPortal), an energy & recharge system, travel restrictions, and server sync.",
+  "dependencies": [
+    "denikson-BepInExPack_Valheim-5.4.2202",
+    "ValheimModding-Jotunn-2.20.1"
+  ]
+}

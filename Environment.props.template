@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <!-- 
+    Copy this file to Environment.props and adjust paths for your local setup.
+    Environment.props is ignored by git so personal directory paths are not committed.
+  -->
+  <PropertyGroup>
+    <!-- Path to your Valheim game installation directory -->
+    <ValheimPath>C:\Program Files (x86)\Steam\steamapps\common\Valheim</ValheimPath>
+
+    <!-- Active r2modman profile name (e.g. DEV, Default, Test) -->
+    <R2ModmanProfile>DEV</R2ModmanProfile>
+
+    <!-- Target plugins folder where PortalTweaks.dll is automatically copied on build -->
+    <DeployPath>$(APPDATA)\r2modmanPlus-local\Valheim\profiles\$(R2ModmanProfile)\BepInEx\plugins\PortalTweaks</DeployPath>
+
+    <!-- Fallback game folder deploy path (uncomment if using manual BepInEx in game root) -->
+    <!-- <DeployPath>$(ValheimPath)\BepInEx\plugins\PortalTweaks</DeployPath> -->
+  </PropertyGroup>
+</Project>
