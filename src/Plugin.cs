@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 using PortalTweaks.Configuration;
@@ -11,7 +11,7 @@ namespace PortalTweaks
     {
         public const string ModGuid = "com.user.xpandedportal";
         public const string ModName = "XpandedPortal";
-        public const string ModVersion = "1.0.0";
+        public const string ModVersion = "1.1.0";
 
         internal static ManualLogSource Log = null!;
         private Harmony _harmony = null!;
