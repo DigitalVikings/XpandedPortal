@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using PortalTweaks.Configuration;
-using PortalTweaks.Data;
-using PortalTweaks.Patches;
+using DigitalVikings.XpandedPortal.Configuration;
+using DigitalVikings.XpandedPortal.Data;
+using DigitalVikings.XpandedPortal.Patches;
 using UnityEngine;
 
-namespace PortalTweaks.Energy
+namespace DigitalVikings.XpandedPortal.Energy
 {
     /// <summary>
     /// Manages portal energy accumulation, cost calculations, deductions, and deficit backlash.

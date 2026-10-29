@@ -2,6 +2,12 @@
 
 All notable changes to **XpandedPortal** will be documented in this file.
 
+## [1.1.1] - 2026-10-29
+
+### Changed
+- **Canonical GUID & Namespace Migration**: Formally updated plugin GUID to `com.digitalvikings.xpandedportal` and namespaces to `DigitalVikings.XpandedPortal`.
+- **Automatic Configuration Migration**: Seamlessly preserves and migrates player settings from previous configuration files on first launch.
+
 ## [1.1.0] - 2026-10-25
 
 ### Added

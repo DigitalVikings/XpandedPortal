@@ -1,4 +1,4 @@
-namespace PortalTweaks.Configuration
+namespace DigitalVikings.XpandedPortal.Configuration
 {
     /// <summary>
     /// Custom attributes recognized via reflection by BepInEx ConfigurationManager and other in-game config editors.

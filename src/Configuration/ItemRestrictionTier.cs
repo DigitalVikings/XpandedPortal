@@ -1,4 +1,4 @@
-namespace PortalTweaks.Configuration
+namespace DigitalVikings.XpandedPortal.Configuration
 {
     /// <summary>
     /// Progressive filtering tiers dictating what items players can carry through portals.

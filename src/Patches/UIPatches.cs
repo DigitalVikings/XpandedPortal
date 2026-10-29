@@ -1,8 +1,8 @@
 using HarmonyLib;
-using PortalTweaks.Configuration;
-using PortalTweaks.UI;
+using DigitalVikings.XpandedPortal.Configuration;
+using DigitalVikings.XpandedPortal.UI;
 
-namespace PortalTweaks.Patches
+namespace DigitalVikings.XpandedPortal.Patches
 {
     /// <summary>
     /// Harmony hooks for custom portal UI interception and routing management.

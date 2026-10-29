@@ -6,10 +6,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>XpandedPortal</AssemblyName>
-    <RootNamespace>PortalTweaks</RootNamespace>
+    <RootNamespace>DigitalVikings.XpandedPortal</RootNamespace>
     <Product>XpandedPortal</Product>
-    <Version>1.1.0</Version>
-    <Authors>XpandedPortal Contributors</Authors>
+    <Version>1.1.1</Version>
+    <Authors>DigitalVikings</Authors>
     <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

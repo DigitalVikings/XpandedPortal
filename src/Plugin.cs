@@ -1,17 +1,18 @@
-﻿using BepInEx;
+﻿using System.IO;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using PortalTweaks.Configuration;
+using DigitalVikings.XpandedPortal.Configuration;
 
-namespace PortalTweaks
+namespace DigitalVikings.XpandedPortal
 {
     [BepInPlugin(ModGuid, ModName, ModVersion)]
     [BepInDependency("com.jotunn.jotunn", BepInDependency.DependencyFlags.SoftDependency)]
-    public class PortalTweaksPlugin : BaseUnityPlugin
+    public class XpandedPortalPlugin : BaseUnityPlugin
     {
-        public const string ModGuid = "com.user.xpandedportal";
+        public const string ModGuid = "com.digitalvikings.xpandedportal";
         public const string ModName = "XpandedPortal";
-        public const string ModVersion = "1.1.0";
+        public const string ModVersion = "1.1.1";
 
         internal static ManualLogSource Log = null!;
         private Harmony _harmony = null!;
@@ -20,6 +21,8 @@ namespace PortalTweaks
         {
             Log = Logger;
             Log.LogInfo($"{ModName} v{ModVersion} initializing...");
+
+            MigrateLegacyConfig();
 
             // Initialize configuration
             ModConfig.Init(Config);
@@ -34,6 +37,24 @@ namespace PortalTweaks
             if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("com.jotunn.jotunn"))
             {
                 HookJotunnSync();
+            }
+        }
+
+        private void MigrateLegacyConfig()
+        {
+            try
+            {
+                string oldCfg = Path.Combine(Paths.ConfigPath, "com.user.xpandedportal.cfg");
+                string newCfg = Path.Combine(Paths.ConfigPath, $"{ModGuid}.cfg");
+                if (File.Exists(oldCfg) && !File.Exists(newCfg))
+                {
+                    File.Copy(oldCfg, newCfg);
+                    Log.LogInfo($"Migrated legacy configuration from '{oldCfg}' to '{newCfg}'.");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Log.LogWarning($"Failed to migrate legacy configuration: {ex.Message}");
             }
         }
 

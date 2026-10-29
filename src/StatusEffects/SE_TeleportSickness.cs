@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using PortalTweaks.Configuration;
+using DigitalVikings.XpandedPortal.Configuration;
 using UnityEngine;
 
-namespace PortalTweaks.StatusEffects
+namespace DigitalVikings.XpandedPortal.StatusEffects
 {
     /// <summary>
     /// Custom status effect applying post-teleport sickness debuffs.

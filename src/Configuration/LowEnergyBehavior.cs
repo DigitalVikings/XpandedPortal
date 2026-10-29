@@ -1,4 +1,4 @@
-namespace PortalTweaks.Configuration
+namespace DigitalVikings.XpandedPortal.Configuration
 {
     /// <summary>
     /// Determines how portals respond when a player attempts to teleport with insufficient energy.

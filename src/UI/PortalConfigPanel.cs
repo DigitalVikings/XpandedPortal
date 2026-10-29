@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using Jotunn.Managers;
-using PortalTweaks.Configuration;
-using PortalTweaks.Data;
-using PortalTweaks.Energy;
-using PortalTweaks.Patches;
-using PortalTweaks.StatusEffects;
+using DigitalVikings.XpandedPortal.Configuration;
+using DigitalVikings.XpandedPortal.Data;
+using DigitalVikings.XpandedPortal.Energy;
+using DigitalVikings.XpandedPortal.Patches;
+using DigitalVikings.XpandedPortal.StatusEffects;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PortalTweaks.UI
+namespace DigitalVikings.XpandedPortal.UI
 {
     /// <summary>
     /// Interactive in-game configuration panel for portals supporting destination selection and passwords.

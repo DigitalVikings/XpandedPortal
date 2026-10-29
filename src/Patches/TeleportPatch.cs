@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using HarmonyLib;
-using PortalTweaks.Configuration;
-using PortalTweaks.Data;
-using PortalTweaks.Energy;
-using PortalTweaks.StatusEffects;
+using DigitalVikings.XpandedPortal.Configuration;
+using DigitalVikings.XpandedPortal.Data;
+using DigitalVikings.XpandedPortal.Energy;
+using DigitalVikings.XpandedPortal.StatusEffects;
 using UnityEngine;
 
-namespace PortalTweaks.Patches
+namespace DigitalVikings.XpandedPortal.Patches
 {
     /// <summary>
     /// Harmony patches for portal interaction, teleport restrictions, weight limits, distance limits, and passwords.
@@ -14,6 +14,9 @@ namespace PortalTweaks.Patches
     [HarmonyPatch]
     public static class TeleportPatch
     {
+        private static MaterialPropertyBlock? s_portalPropBlock;
+        private static MaterialPropertyBlock PortalPropBlock => s_portalPropBlock ??= new MaterialPropertyBlock();
+        private static readonly int EmissionColorProp = Shader.PropertyToID("_EmissionColor");
         #region Weight Limit
 
         /// <summary>
@@ -526,7 +529,7 @@ namespace PortalTweaks.Patches
             if (!ModConfig.ModEnabled.Value || !ModConfig.EnableEnergySystem.Value)
                 return;
 
-            if (__instance.m_model == null || __instance.m_model.material == null)
+            if (__instance.m_model == null)
                 return;
 
             bool isConduit = EnergyManager.IsConduitDiscountActive(__instance, Player.m_localPlayer, out _);
@@ -545,12 +548,16 @@ namespace PortalTweaks.Patches
                     Color targetColor = hasTarget ? activeTargetColor : baseColor;
 
                     Color finalColor = Color.Lerp(baseColor, targetColor, energyFraction);
-                    __instance.m_model.material.SetColor("_EmissionColor", finalColor);
+                    __instance.m_model.GetPropertyBlock(PortalPropBlock);
+                    PortalPropBlock.SetColor(EmissionColorProp, finalColor);
+                    __instance.m_model.SetPropertyBlock(PortalPropBlock);
                 }
             }
             else if (isConduit)
             {
-                __instance.m_model.material.SetColor("_EmissionColor", ConduitRuneColor);
+                __instance.m_model.GetPropertyBlock(PortalPropBlock);
+                PortalPropBlock.SetColor(EmissionColorProp, ConduitRuneColor);
+                __instance.m_model.SetPropertyBlock(PortalPropBlock);
             }
         }
 
@@ -708,7 +715,7 @@ namespace PortalTweaks.Patches
 
                         if (ModConfig.LogPortalTeleports.Value)
                         {
-                            PortalTweaksPlugin.Log.LogInfo(
+                            XpandedPortalPlugin.Log.LogInfo(
                                 $"Portal [{__instance.GetText()}] overdrafted by {deficit:F1} energy. Sickness extended by {overdraftExtraSickness:F0}s."
                             );
                         }
@@ -721,7 +728,7 @@ namespace PortalTweaks.Patches
 
                     if (ModConfig.LogPortalTeleports.Value)
                     {
-                        PortalTweaksPlugin.Log.LogInfo(
+                        XpandedPortalPlugin.Log.LogInfo(
                             $"Portal [{__instance.GetText()}] consumed {cost:F1} energy ({breakdown}). Remaining: {remainingEnergy:F1}/{maxEnergy:F1}"
                         );
                     }
@@ -734,7 +741,7 @@ namespace PortalTweaks.Patches
             if (ModConfig.LogPortalTeleports.Value && player != null)
             {
                 string tag = __instance.GetText();
-                PortalTweaksPlugin.Log.LogInfo($"Player '{player.GetPlayerName()}' teleporting via portal [Tag: '{tag}']");
+                XpandedPortalPlugin.Log.LogInfo($"Player '{player.GetPlayerName()}' teleporting via portal [Tag: '{tag}']");
             }
 
             // 5. Schedule Teleportation Sickness & Durability Loss upon arrival

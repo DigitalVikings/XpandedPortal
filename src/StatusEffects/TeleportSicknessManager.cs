@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using PortalTweaks.Configuration;
+using DigitalVikings.XpandedPortal.Configuration;
 using UnityEngine;
 
-namespace PortalTweaks.StatusEffects
+namespace DigitalVikings.XpandedPortal.StatusEffects
 {
     /// <summary>
     /// Coordinates calculation, durability penalty, and status effect application for Teleportation Sickness.

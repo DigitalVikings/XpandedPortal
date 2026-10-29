@@ -1,6 +1,6 @@
 using BepInEx.Configuration;
 
-namespace PortalTweaks.Configuration
+namespace DigitalVikings.XpandedPortal.Configuration
 {
     public static class ModConfig
     {

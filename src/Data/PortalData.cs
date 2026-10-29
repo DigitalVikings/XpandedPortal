@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PortalTweaks.Data
+namespace DigitalVikings.XpandedPortal.Data
 {
     /// <summary>
     /// Data structure representing a portal in the world.
@@ -46,7 +46,7 @@ namespace PortalTweaks.Data
                 Tag = zdo.GetString(ZDOVars.s_tag, string.Empty),
                 Password = zdo.GetString(KeyPassword, string.Empty),
                 Position = zdo.GetPosition(),
-                OutboundTarget = zdo.GetZDOID(KeyOutboundTarget),
+                OutboundTarget = zdo.GetConnectionZDOID(ZDOExtraData.ConnectionType.Portal),
                 OutboundPassword = zdo.GetString(KeyOutboundPassword, string.Empty)
             };
         }
@@ -108,7 +108,6 @@ namespace PortalTweaks.Data
             // 3. Save target routing and outbound password if target selection is active
             if (updateTarget)
             {
-                zdo.Set(KeyOutboundTarget, outboundTarget);
                 zdo.Set(KeyOutboundPassword, outboundPassword ?? string.Empty);
                 zdo.SetConnection(ZDOExtraData.ConnectionType.Portal, outboundTarget);
             }
